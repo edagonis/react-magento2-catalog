@@ -1,0 +1,37 @@
+# catalog component
+
+will show available products
+
+products will have a router link to render the product component
+
+state = {
+    {
+        id,
+        name,
+        price,
+        image,
+        ...
+    },
+    {
+        id,
+        name,
+        price,
+        image,
+        ...
+    }
+    ...
+}
+
+
+
+# product component
+
+will show selected product
+
+state = {
+    id,
+    name,
+    price,
+    image,
+    ...
+}
