@@ -1,0 +1,65 @@
+Arguments: 
+  /usr/local/bin/node /home/eduardo/.yarn/bin/yarn.js run build
+
+PATH: 
+  /home/eduardo/.yarn/bin:/home/eduardo/.config/yarn/global/node_modules/.bin:/home/eduardo/bin:/home/eduardo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.9.0
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "fidera-component",
+    "version": "1.0.0",
+    "main": "app.js",
+    "author": "Eduardo Souza",
+    "license": "MIT",
+    "scripts": {
+      "build": "webpack"
+    },
+    "devDependencies": {
+      "babel-cli": "6.24.1",
+      "babel-core": "6.25.0",
+      "babel-loader": "7.1.1",
+      "babel-plugin-transform-class-properties": "6.24.1",
+      "babel-preset-env": "1.5.2",
+      "babel-preset-react": "6.24.1",
+      "css-loader": "0.28.4",
+      "node-sass": "4.5.3",
+      "sass-loader": "6.0.6",
+      "style-loader": "0.18.2",
+      "webpack": "3.1.0"
+    },
+    "dependencies": {
+      "react": "16.0.0",
+      "react-dom": "16.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 2
+  Command: sh
+  Arguments: -c webpack
+  Directory: /home/eduardo/workspace/mage2/app/code/Fidera/Component/view/frontend
+  Output:
+  
+      at ProcessTermError.MessageError (/home/eduardo/.yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/home/eduardo/.yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/home/eduardo/.yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
