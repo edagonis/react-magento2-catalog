@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppRouter from './routers/AppRouter';
 
 const Component = () => (
     <div>
-        <h1>This is the React Component under my Magento 2 module</h1>
+        <AppRouter />
     </div>
 );
 

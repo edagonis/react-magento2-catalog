@@ -15,13 +15,13 @@ Platform:
 
 npm manifest: 
   {
-    "name": "fidera-component",
+    "name": "react-magento-catalog",
     "version": "1.0.0",
     "main": "app.js",
     "author": "Eduardo Souza",
     "license": "MIT",
     "scripts": {
-      "build": "webpack"
+      "build": "rm -rf web && webpack"
     },
     "devDependencies": {
       "babel-cli": "6.24.1",
@@ -52,8 +52,8 @@ Trace:
   Error: Command failed.
   Exit code: 2
   Command: sh
-  Arguments: -c webpack
-  Directory: /home/eduardo/workspace/mage2/app/code/Fidera/Component/view/frontend
+  Arguments: -c rm -rf web && webpack
+  Directory: /home/eduardo/workspace/mage2/app/code/Fidera/CatalogComponent/view/frontend
   Output:
   
       at ProcessTermError.MessageError (/home/eduardo/.yarn/lib/cli.js:186:110)
