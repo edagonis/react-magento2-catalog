@@ -38,7 +38,7 @@ class Index extends \Magento\Framework\App\Action\Action
     {
         $collection = $this->_productCollectionFactory->create();
         $collection->addAttributeToSelect('*');
-        $collection->setPageSize(3); // fetching only 3 products
+        $collection->setPageSize(10); // fetching only 10 products
         $result = $this->resultJsonFactory->create();
 
         $resultData = array();

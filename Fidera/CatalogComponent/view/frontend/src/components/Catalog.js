@@ -10,8 +10,7 @@ export default class Catalog extends React.Component {
         }
     }
 
-    componentDidMount() {
-        console.log('mounted');
+    componentWillMount() {
         fetch('/catalogcomponent').then((res) => {
             return res.json();
         }).then((data) => {
@@ -21,10 +20,8 @@ export default class Catalog extends React.Component {
         });
     }
 
-    handleProductState(sku) {
-        return this.state.products.filter((product) => {
-            return product.sku == sku && product;
-        })
+    getProductState(sku) {
+        return this.state.products.filter((product) => product.sku == sku && product)
     }
 
     render() {
@@ -32,9 +29,8 @@ export default class Catalog extends React.Component {
             <div>
                 {
                     this.state.products.map((product) => (
-                            console.log(product),
                             <div key={product.sku}>
-                                <Link to={{pathname: `/product/${product.sku}`, product: this.handleProductState(product.sku)}}>{product.name}</Link>
+                                <Link to={{pathname: `/product/${product.sku}`, product: this.getProductState(product.sku)}}>{product.name}</Link>
                             </div>
                         )
                     )

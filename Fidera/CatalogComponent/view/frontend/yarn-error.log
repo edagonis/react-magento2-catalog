@@ -1,14 +1,14 @@
 Arguments: 
-  /home/eduardo/.nvm/versions/node/v8.9.1/bin/node /home/eduardo/.nvm/versions/node/v8.9.1/bin/yarn run build
+  /usr/local/bin/node /home/eduardo/.yarn/bin/yarn.js run build
 
 PATH: 
-  /home/eduardo/.nvm/versions/node/v8.9.1/bin:/home/eduardo/bin:/home/eduardo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+  /home/eduardo/.yarn/bin:/home/eduardo/.config/yarn/global/node_modules/.bin:/home/eduardo/bin:/home/eduardo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  8.9.1
+  8.9.0
 
 Platform: 
   linux x64
@@ -21,7 +21,7 @@ npm manifest:
     "author": "Eduardo Souza",
     "license": "MIT",
     "scripts": {
-      "build": "rm -rf web && webpack"
+      "build": "rm -rf ../../../../../../pub/static/* && rm -rf web && webpack"
     },
     "devDependencies": {
       "babel-cli": "6.24.1",
@@ -6044,15 +6044,15 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 2
+  Exit code: 1
   Command: sh
-  Arguments: -c rm -rf web && webpack
-  Directory: /home/eduardo/workspace/zenny/app/code/Fidera/CatalogComponent/view/frontend
+  Arguments: -c rm -rf ../../../../../../pub/static/* && rm -rf web && webpack
+  Directory: /home/eduardo/workspace/mage2/app/code/Fidera/CatalogComponent/view/frontend
   Output:
   
-      at ProcessTermError.MessageError (/home/eduardo/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/home/eduardo/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/home/eduardo/.nvm/versions/node/v8.9.1/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ProcessTermError.MessageError (/home/eduardo/.yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/home/eduardo/.yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/home/eduardo/.yarn/lib/cli.js:30281:17)
       at emitTwo (events.js:126:13)
       at ChildProcess.emit (events.js:214:7)
       at maybeClose (internal/child_process.js:925:16)
