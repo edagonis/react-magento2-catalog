@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Product = (props) => (
     <div>
-        <h2>{console.log(props)}</h2>
         <Link to="/">back to catalog</Link>
-        <h2>it is the product of id {props.match.params.id}</h2>
+        <h2>{props.location.product.name}</h2>
+        <span>sku: {props.location.product.sku}</span>
+        <p><img width="145" src={'/pub/media/catalog/product' + props.location.product.imageUrl} /></p>
+        <p>price: <strong>${props.location.product.finalprice}</strong></p>
     </div>
 );
 

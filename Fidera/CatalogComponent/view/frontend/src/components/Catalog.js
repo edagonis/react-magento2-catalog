@@ -21,7 +21,7 @@ export default class Catalog extends React.Component {
     }
 
     getProductState(sku) {
-        return this.state.products.filter((product) => product.sku == sku && product)
+        return this.state.products.find((product) => product.sku == sku)
     }
 
     render() {
@@ -30,7 +30,10 @@ export default class Catalog extends React.Component {
                 {
                     this.state.products.map((product) => (
                             <div key={product.sku}>
-                                <Link to={{pathname: `/product/${product.sku}`, product: this.getProductState(product.sku)}}>{product.name}</Link>
+                                <Link to={{pathname: `/product/${product.sku}`, product: this.getProductState(product.sku)}}><h2>{product.name}</h2></Link>
+                                <span>sku: {product.sku}</span>
+                                <p><img width="145" src={'pub/media/catalog/product' + product.imageUrl} /></p>
+                                <p>price: <strong>${product.finalprice}</strong></p>
                             </div>
                         )
                     )
