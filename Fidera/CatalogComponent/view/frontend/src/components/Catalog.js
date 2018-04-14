@@ -6,27 +6,35 @@ export default class Catalog extends React.Component {
         super(props);
 
         this.state = {
-            products: [{
-                id: 1,
-                name: 'T-shirt',
-                price: 20.00,
-                image: 'https://images-na.ssl-images-amazon.com/images/I/616kNATei3L._UX425_.jpg'
-            },
-            {
-                id: 2,
-                name: 'Leggings',
-                price: 35.00,
-                image: 'https://images-na.ssl-images-amazon.com/images/I/616kNATei3L._UX425_.jpg'
-            }]
+            products: []
         }
     }
+
+    componentDidMount() {
+        console.log('mounted');
+        fetch('/catalogcomponent').then((res) => {
+            return res.json();
+        }).then((data) => {
+            this.setState({
+                products: data
+            })
+        });
+    }
+
+    handleProductState(sku) {
+        return this.state.products.filter((product) => {
+            return product.sku == sku && product;
+        })
+    }
+
     render() {
         return (
             <div>
                 {
                     this.state.products.map((product) => (
-                            <div key={product.id}>
-                                <Link to={`/product/${product.id}`}>{product.name}</Link>
+                            console.log(product),
+                            <div key={product.sku}>
+                                <Link to={{pathname: `/product/${product.sku}`, product: this.handleProductState(product.sku)}}>{product.name}</Link>
                             </div>
                         )
                     )
