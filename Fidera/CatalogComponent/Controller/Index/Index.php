@@ -23,19 +23,25 @@ class Index extends \Magento\Framework\App\Action\Action
 
     protected $productRepository;
 
+    protected $resultPageFactory;
+
     /**
      * Constructor
      *
      * @param \Magento\Framework\App\Action\Context  $context
      * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
      * @param \Magento\Catalog\Helper\Image $productImageHelper
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
+        \Magento\Framework\Data\Form\FormKey $formKey,
         //\Magento\Catalog\Helper\Image $productImageHelper,
         array $data = []
     ) {
@@ -43,6 +49,8 @@ class Index extends \Magento\Framework\App\Action\Action
         $this->_resultJsonFactory = $resultJsonFactory;
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_productRepository = $productRepository;
+        $this->_resultPageFactory = $resultPageFactory;
+        $this->_formKey = $formKey;
         //$this->_productImageHelper = $productImageHelper;
     }
 
@@ -56,16 +64,16 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $productSku = $this->_request->getParam('sku');
-        $result = $this->_resultJsonFactory->create();
+        $resultJson = $this->_resultJsonFactory->create();
 
         // Return product information by id
         if ($productSku) {
-            $productInfo = $this->getProductBySku($productSku);
+            $productInfo = $this->getProductInfo(false, $productSku);
 
             if ($productInfo) {
-                return $result->setData($productInfo);
+                return $resultJson->setData($productInfo);
             }
-            return $result->setData(array('error' => 'Can\t found a product with sku ' . $productSku));
+            return $resultJson->setData(array('error' => 'Can\t found a product with sku ' . $productSku));
         }
 
 
@@ -75,36 +83,35 @@ class Index extends \Magento\Framework\App\Action\Action
 
         $resultData = array();
         foreach($collection as $product) {
-            $resultData[] = array(
-                'name' => $product->getName(),
-                'sku' => $product->getSku(),
-                'finalprice' => $product->getFinalPrice(),
-                'imageUrl' => $product->getImage(),
-                'productUrl' => $product->getProductUrl()
-            );
+            $resultData[] = $this->getProductInfo($product, null);
         }
 
         /** @var \Magento\Framework\Controller\Result\Json $result */
-        return $result->setData($resultData);
+        return $resultJson->setData($resultData);
     }
 
-    public function getProductBySku($productSku)
+    public function getProductInfo($_product = false, $productSku)
     {
-        try {
-            $product = $this->_productRepository->get($productSku);
-        } catch (\Magento\Framework\Exception\NoSuchEntityException $e){
-            $product = false;
+        if (!$_product) {
+            try {
+                $_product = $this->_productRepository->get($productSku);
+            } catch (\Magento\Framework\Exception\NoSuchEntityException $e){
+                return false;
+            }
         }
 
-        if (!$product) {
-            return false;
-        }
+        $resultPage = $this->_resultPageFactory->create();
+        $listProductBlock = $resultPage->getLayout()->createBlock('\Magento\Catalog\Block\Product\ListProduct');
+        $addToCartUrl = $listProductBlock->getAddToCartUrl($_product);
+
 
         $productInfo = array(
-            'name' => $product->getName(),
-            'sku' => $product->getSku(),
-            'finalprice' => $product->getFinalPrice(),
-            'imageUrl' => $product->getImage(),
+            'name' => $_product->getName(),
+            'sku' => $_product->getSku(),
+            'finalprice' => $_product->getFinalPrice(),
+            'addToCartUrl' => $addToCartUrl,
+            'formKey' => $this->_formKey->getFormKey(),
+            'imageUrl' => $_product->getImage(),
         );
 
         return $productInfo;
