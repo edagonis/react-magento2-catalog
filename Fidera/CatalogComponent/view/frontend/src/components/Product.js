@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Product = (props) => (
-    <div>
-        <Link to="/">back to catalog</Link>
-        <h2>{props.location.product.name}</h2>
-        <span>sku: {props.location.product.sku}</span>
-        <p><img width="145" src={'/pub/media/catalog/product' + props.location.product.imageUrl} /></p>
-        <p>price: <strong>${props.location.product.finalprice}</strong></p>
-    </div>
-);
+export default class Product extends React.Component {
+    constructor(props) {
+        super(props);
 
-export default Product;
+        this.state = {}
+    }
+
+    componentWillMount() {
+        console.log(this.props.location.product);
+    }
+
+    render() {
+        return (
+            <div>
+                <Link to="/">back to catalog</Link>
+            </div>
+        )
+    }
+}

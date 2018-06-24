@@ -21,7 +21,7 @@ npm manifest:
     "author": "Eduardo Souza",
     "license": "MIT",
     "scripts": {
-      "build": "rm -rf ../../../../../../pub/static/* && rm -rf web && webpack"
+      "build": "rm -rf web && webpack"
     },
     "devDependencies": {
       "babel-cli": "6.24.1",
@@ -6044,9 +6044,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 127
   Command: sh
-  Arguments: -c rm -rf ../../../../../../pub/static/* && rm -rf web && webpack
+  Arguments: -c rm -rf web && webpack
   Directory: /home/eduardo/workspace/mage2/app/code/Fidera/CatalogComponent/view/frontend
   Output:
   
