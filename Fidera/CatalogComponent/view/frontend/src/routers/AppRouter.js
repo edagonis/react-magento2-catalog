@@ -10,6 +10,7 @@ const AppRouter = () => (
         <div>
             <Switch>
                 <Route path="/" component={Catalog} exact={true} />
+                <Route path="/index.php" component={Catalog} exact={true} />
                 <Route path="/product/:id" component={Product} />
             </Switch>
         </div>
