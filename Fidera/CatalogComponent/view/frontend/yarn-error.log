@@ -37,6 +37,7 @@ npm manifest:
       "webpack": "3.1.0"
     },
     "dependencies": {
+      "babel-plugin-transform-runtime": "^6.23.0",
       "react": "16.0.0",
       "react-dom": "16.0.0",
       "react-router-dom": "^4.2.2",
@@ -871,6 +872,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-regenerator/-/babel-plugin-transform-regenerator-6.26.0.tgz#e0703696fbde27f0a3efcacf8b4dca2f7b3a8f2f"
     dependencies:
       regenerator-transform "^0.10.0"
+  
+  babel-plugin-transform-runtime@^6.23.0:
+    version "6.23.0"
+    resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
+    dependencies:
+      babel-runtime "^6.22.0"
   
   babel-plugin-transform-strict-mode@^6.24.1:
     version "6.24.1"
@@ -6044,7 +6051,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 127
+  Exit code: 2
   Command: sh
   Arguments: -c rm -rf web && webpack
   Directory: /home/eduardo/workspace/mage2/app/code/Fidera/CatalogComponent/view/frontend

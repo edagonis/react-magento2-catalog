@@ -11,13 +11,12 @@ export default class Catalog extends React.Component {
     }
 
     componentWillMount() {
-        fetch('/catalogcomponent').then((res) => {
-            return res.json();
-        }).then((data) => {
-            this.setState({
-                products: data
-            })
-        });
+        (async () => {
+            const rawResponse = await fetch('/catalogcomponent');
+            const products = await rawResponse.json();
+
+            this.setState({ products });
+        })();
     }
 
     getProductState(sku) {
