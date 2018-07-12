@@ -4,7 +4,7 @@ react-magento2-catalog is a Magento 2 module.
 
 It is basically made of React components on front-end, that consumes a controller and renders product's information.
 
-Currently it renders 10 active products on the homepage.
+Currently it renders 10 active products on the homepage, allowing you to switch between Catalog and Product(product page) component's, using react-router.
 
 ## installation
 
